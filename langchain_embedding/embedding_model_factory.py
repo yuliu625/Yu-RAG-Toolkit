@@ -9,6 +9,9 @@ import os
 
 
 class EmbeddingModelFactory:
+    """
+    基础的embedding-model-factory。
+    """
     def __init__(self):
         ...
 
@@ -24,5 +27,10 @@ class EmbeddingModelFactory:
 
 
 class CachedEmbeddingModelFactory:
+    """
+    带有缓存的embedding-model-factory。
+
+    实现这个类的原因在于，很多时候embedding-model是在本地运行，因此需要使用同一个embedding-model以节省资源。
+    """
     ...
 
