@@ -5,7 +5,7 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 
-from .indexer import BaseIndexer
+from .base_indexer import BaseIndexer
 
 from langchain_chroma import Chroma
 from pathlib import Path
