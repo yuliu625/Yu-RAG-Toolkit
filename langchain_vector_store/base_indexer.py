@@ -19,7 +19,7 @@ class IndexerInterface(ABC):
     """
     一个indexer的基础定义。
 
-    默认:
+    约定:
         - vector-store和embedding-model的绑定。
             vector-store和embedding-model完全绑定，因此我定义一个vector-store仅使用完全对应的embedding-model。
             为了简化，一个vector-store仅构建一个collection。
@@ -28,28 +28,34 @@ class IndexerInterface(ABC):
         - load_embedding_model: vector-store和embedding-model是完全绑定的，第一步就需要实现embedding-model的加载。
         - load_vector_store: 最主要的方法，加载vector-store，初始化或者进行后续的处理。
     """
+
+    @staticmethod
     @abstractmethod
-    def load_embedding_model(self, *args, **kwargs) -> Embeddings:
+    def load_embedding_model(*args, **kwargs) -> Embeddings:
         """
         加载embedding-model的方法。
 
-        建议使用工厂模式构建，这里直接传递给对应的embedding-model。
+        约定:
+            - 使用工厂模式构建，传递获得embedding-model实例。
 
         Returns:
-            (Embeddings), langchain_core.embeddings定义的embedding-model。
+            Embeddings: langchain_core.embeddings定义的embedding-model。
         """
 
+    @staticmethod
     @abstractmethod
-    def load_vector_store(self, *args, **kwargs) -> VectorStore:
+    def load_vector_store(*args, **kwargs) -> VectorStore:
         """
-        加载vector-store的方法。
+        加载vector-store的方法。根据具体的vector-store-client实现。
 
-        因具体的vector-store-client而异。
+        约定:
+            - 加载vector-store需要同时加载embedding-model，约定使用使用load_embedding_model加载。
 
         Returns:
-            (VectorStore), langchain_core.vectorstores定义的VectorStore。
+            VectorStore: langchain_core.vectorstores定义的VectorStore。
         """
 
+    @staticmethod
     def save_vector_store(self, *args, **kwargs) -> None:
         """
         保存vector-store的方法。
@@ -57,13 +63,16 @@ class IndexerInterface(ABC):
         很多工具中，vector-store在加载之后，所有的修改会自动同步。
         因此，这个方法并不强制实现。
         """
+        raise NotImplementedError
 
-    def from_document_store(self, *args, **kwargs) -> VectorStore:
+    @staticmethod
+    def from_document_store(*args, **kwargs) -> VectorStore:
         """
         将一个已有embedding的vector-store，修改为新的embedding-model。
 
         这里主要指的是冷启动，原始的vector-store实际上为document-store。
         """
+        raise NotImplementedError
 
 
 class BaseIndexer(IndexerInterface):
@@ -103,7 +112,7 @@ class BaseIndexer(IndexerInterface):
             vector_store: 需要进行处理的vector-store，
 
         Returns:
-            list[Document], 原始保存进vector-store的documents。
+            list[Document]: 原始保存进vector-store的documents。
         """
         # 方法: 以空字符串，查询远超过存储容量的记录，这样就能返回全部的记录。
         documents = vector_store.similarity_search('', k=10**6)
@@ -136,8 +145,8 @@ class BaseChromaIndexer(BaseIndexer):
         document_store = self.get_all_documents_from_document_store()
 
     # ====必要的实现====
+    @staticmethod
     def load_vector_store(
-        self,
         persist_directory: str,
         embedding_function: Embeddings,
     ) -> VectorStore:
@@ -149,7 +158,7 @@ class BaseChromaIndexer(BaseIndexer):
             embedding_function: langchain_core.embeddings定义的embedding-model。可以是chroma扩展方法的embedding_function。
 
         Returns:
-            (VectorStore), langchain_core.vectorstores定义的VectorStore。这里实际为Chroma。
+            VectorStore: langchain_core.vectorstores定义的VectorStore。这里实际为Chroma。
         """
         vector_store = Chroma(
             persist_directory=persist_directory,
@@ -170,7 +179,7 @@ class BaseChromaIndexer(BaseIndexer):
             document_store_embedding_function:
 
         Returns:
-            (list[Document]), document-store中获取全部的documents。
+            list[Document]: document-store中获取全部的documents。
         """
         document_store = self.load_vector_store(
             persist_directory=document_store_dir,
@@ -205,8 +214,8 @@ class DefaultChromaIndexer(BaseChromaIndexer):
         ...
 
     # ====必要的实现====
+    @staticmethod
     def load_embedding_model(
-        self,
         embedding_model_config: dict
     ) -> Embeddings:
         """通过strategy-pattern加载embedding-model。"""
