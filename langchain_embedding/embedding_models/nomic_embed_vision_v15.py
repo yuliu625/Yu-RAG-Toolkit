@@ -7,12 +7,16 @@ https://huggingface.co/nomic-ai/nomic-embed-vision-v1.5
 https://huggingface.co/nomic-ai/nomic-embed-text-v1.5
 """
 
-from langchain_core.embeddings import Embeddings
+from __future__ import annotations
 
+from langchain_core.embeddings import Embeddings
 from transformers import AutoTokenizer, AutoModel, AutoImageProcessor
 import torch
 import torch.nn.functional as F
 from PIL import Image
+
+from typing import TYPE_CHECKING
+# if TYPE_CHECKING:
 
 
 class NomicEmbedVisionV15(Embeddings):
