@@ -5,11 +5,16 @@ BGE基础的multi-modal-embedding-model。
 https://huggingface.co/BAAI/BGE-VL-large
 """
 
+from __future__ import annotations
+
 from langchain_core.embeddings import Embeddings
 
 from transformers import AutoModel
 import torch
 from PIL import Image
+
+from typing import TYPE_CHECKING
+# if TYPE_CHECKING:
 
 
 class BGEVL(Embeddings):
