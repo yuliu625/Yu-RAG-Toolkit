@@ -10,9 +10,13 @@ chroma是我目前主要使用的本地嵌入式数据库，但是langchain中�
 chroma默认将图片以base64进行编码，以字符串进行存储。
 """
 
+from __future__ import annotations
 from abc import abstractmethod
 
 from langchain_core.embeddings import Embeddings
+
+from typing import TYPE_CHECKING
+# if TYPE_CHECKING:
 
 
 class ChromaMultiModalEmbeddingModel(Embeddings):
