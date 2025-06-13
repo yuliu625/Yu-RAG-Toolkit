@@ -4,7 +4,12 @@
 用于测试，以及暂时存储原始documents为document-store。
 """
 
+from __future__ import annotations
+
 from langchain_core.embeddings import Embeddings
+
+from typing import TYPE_CHECKING
+# if TYPE_CHECKING:
 
 
 class YuFakeEmbeddingModel(Embeddings):
