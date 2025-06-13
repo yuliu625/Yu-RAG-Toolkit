@@ -5,12 +5,16 @@ nomic基于VLM实现的visual-document-retrieval模型。
 https://huggingface.co/nomic-ai/nomic-embed-multimodal-7b
 """
 
-from langchain_core.embeddings import Embeddings
+from __future__ import annotations
 
+from langchain_core.embeddings import Embeddings
 from colpali_engine.models import BiQwen2_5, BiQwen2_5_Processor
 import torch
 from PIL import Image
 from transformers.utils.import_utils import is_flash_attn_2_available
+
+from typing import TYPE_CHECKING
+# if TYPE_CHECKING:
 
 
 class ColnomicEmbedMultimodal(Embeddings):
