@@ -2,12 +2,13 @@
 vector-store相关方法的集成。
 """
 
+from __future__ import annotations
 from abc import ABC, abstractmethod
 
 from langchain_chroma import Chroma
 from pathlib import Path
 
-from typing import TYPE_CHECKING, Optional, Literal
+from typing import TYPE_CHECKING, Literal
 if TYPE_CHECKING:
     from langchain_core.documents import Document
     from langchain_core.embeddings import Embeddings
