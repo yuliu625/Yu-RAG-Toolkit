@@ -2,18 +2,19 @@
 必要文件: indexer。
 """
 
-from .indexer import BaseIndexer
-
+from __future__ import annotations
 from abc import ABC, abstractmethod
 
-from langchain_chroma import Chroma
+from .indexer import BaseIndexer
 
+from langchain_chroma import Chroma
 from pathlib import Path
 
-from langchain_core.documents import Document
-from langchain_core.embeddings import Embeddings
-from langchain_core.vectorstores import VectorStore
-from typing import Optional, Literal
+from typing import TYPE_CHECKING, Literal
+if TYPE_CHECKING:
+    from langchain_core.embeddings import Embeddings
+    from langchain_core.vectorstores import VectorStore
+    from langchain_core.documents import Document
 
 
 class EmbeddingChanger:
