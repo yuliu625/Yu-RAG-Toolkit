@@ -5,11 +5,15 @@
 https://huggingface.co/openai/clip-vit-large-patch14
 """
 
-from langchain_core.embeddings import Embeddings
+from __future__ import annotations
 
+from langchain_core.embeddings import Embeddings
 from transformers import CLIPProcessor, CLIPModel
 import torch
 from PIL import Image
+
+from typing import TYPE_CHECKING
+# if TYPE_CHECKING:
 
 
 class CLIPVitEmbeddingModel(Embeddings):
