@@ -2,10 +2,15 @@
 基于langchain的embedding-model-factory。
 """
 
+from __future__ import annotations
+
 from langchain_core.embeddings import Embeddings
 
 from langchain_huggingface import HuggingFaceEmbeddings
 import os
+
+from typing import TYPE_CHECKING
+# if TYPE_CHECKING:
 
 
 class EmbeddingModelFactory:
