@@ -18,9 +18,6 @@ if TYPE_CHECKING:
 
 
 class EmbeddingChanger:
-    def __init__(self):
-        ...
-
     @staticmethod
     def get_all_documents(
         vector_store: VectorStore,
