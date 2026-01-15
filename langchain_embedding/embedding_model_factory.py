@@ -4,31 +4,29 @@
 
 from __future__ import annotations
 
-from langchain_core.embeddings import Embeddings
-
 from langchain_huggingface import HuggingFaceEmbeddings
 import os
 
 from typing import TYPE_CHECKING
-# if TYPE_CHECKING:
+if TYPE_CHECKING:
+    from langchain_core.embeddings import Embeddings
 
 
 class EmbeddingModelFactory:
     """
     基础的embedding-model-factory。
     """
-    def __init__(self):
-        ...
+    @staticmethod
+    def create_huggingface_embedding_model(
 
-    def get_huggingface_embedding_model(
-        self,
-    ):
-        ...
+    ) -> Embeddings:
+        raise NotImplementedError
 
-    def get_multi_modal_embedding_model(
-        self,
-    ):
-        ...
+    @staticmethod
+    def create_multi_modal_embedding_model(
+
+    ) -> Embeddings:
+        raise NotImplementedError
 
 
 class CachedEmbeddingModelFactory:
