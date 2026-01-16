@@ -85,6 +85,8 @@ class ChromaVectorStoreBuilder:
             persist_directory=str(persist_directory),
             embedding_function=embedding_function,
         )
+        # 示例方法。
+        ## 具体的，可以以add_texts和add_images实现。
         vector_store.add_documents(
             documents=documents,
             metadatas=metadatas,
