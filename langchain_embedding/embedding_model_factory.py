@@ -1,5 +1,14 @@
 """
-基于langchain的embedding-model-factory。
+Sources:
+
+References:
+    https://docs.langchain.com/oss/python/integrations/text_embedding
+
+Synopsis:
+    基于langchain的embedding-model-factory。
+
+Notes:
+
 """
 
 from __future__ import annotations
