@@ -3,6 +3,7 @@ Sources:
     https://github.com/yuliu625/Yu-RAG-Toolkit/langchain_splitting/split_markdown.py
 
 References:
+    https://docs.langchain.com/oss/python/integrations/splitters
 
 Synopsis:
     分割markdown语法构建的文本。
