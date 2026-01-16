@@ -3,7 +3,7 @@ Sources:
     https://github.com/yuliu625/Yu-RAG-Toolkit/langchain_splitting/split_text.py
 
 References:
-
+    https://docs.langchain.com/oss/python/integrations/splitters
 
 Synopsis:
     分割一般的text。
@@ -19,3 +19,6 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from typing import TYPE_CHECKING
 # if TYPE_CHECKING:
+
+
+
