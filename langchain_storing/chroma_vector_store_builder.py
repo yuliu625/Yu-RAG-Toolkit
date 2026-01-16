@@ -2,6 +2,7 @@
 Sources:
 
 References:
+    https://docs.langchain.com/oss/python/integrations/vectorstores
 
 Synopsis:
 
