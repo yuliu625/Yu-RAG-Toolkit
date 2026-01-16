@@ -31,14 +31,17 @@ class MarkdownSplittingMethods:
     def split_markdown_by_header(
         document: Document,
         headers_to_split_on: list[tuple[str, str]],
+        is_strip_headers: bool,  # 该参数约定为False更好。
     ) -> list[Document]:
         default_headers_to_split_on = [
             ("#", "Header 1"),
             ("##", "Header 2"),
             ("###", "Header 3"),
         ]
+        # is_strip_headers = False
         splitter = MarkdownHeaderTextSplitter(
             headers_to_split_on=headers_to_split_on,
+            strip_headers=is_strip_headers,
         )
         # splitter需要的输入是str。但在这个实现中，为了pipeline的清晰流程，以Document对象输入。
         documents = splitter.split_text(
