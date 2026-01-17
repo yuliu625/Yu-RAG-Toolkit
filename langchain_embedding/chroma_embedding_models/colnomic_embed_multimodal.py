@@ -1,4 +1,12 @@
 """
+Sources:
+
+References:
+
+Synopsis:
+
+Notes:
+
 nomic基于VLM实现的visual-document-retrieval模型。
 
 原始模型以及代码来源:
@@ -6,6 +14,7 @@ https://huggingface.co/nomic-ai/nomic-embed-multimodal-7b
 """
 
 from __future__ import annotations
+from loguru import logger
 
 from langchain_core.embeddings import Embeddings
 from colpali_engine.models import BiQwen2_5, BiQwen2_5_Processor
@@ -17,7 +26,7 @@ from typing import TYPE_CHECKING
 # if TYPE_CHECKING:
 
 
-class ColnomicEmbedMultimodal(Embeddings):
+class ColnomicEmbedMultimodalEmbeddingModel(Embeddings):
     """
     nomic基于VLM实现的visual-document-retrieval模型。
 
