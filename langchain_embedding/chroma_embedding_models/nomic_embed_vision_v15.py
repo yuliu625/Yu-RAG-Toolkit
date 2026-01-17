@@ -1,4 +1,12 @@
 """
+Sources:
+
+References:
+
+Synopsis:
+
+Notes:
+
 nomic基础的multi-modal-embedding-model。
 
 原始模型以及代码来源:
@@ -8,6 +16,7 @@ https://huggingface.co/nomic-ai/nomic-embed-text-v1.5
 """
 
 from __future__ import annotations
+from loguru import logger
 
 from langchain_core.embeddings import Embeddings
 from transformers import AutoTokenizer, AutoModel, AutoImageProcessor
@@ -19,7 +28,7 @@ from typing import TYPE_CHECKING
 # if TYPE_CHECKING:
 
 
-class NomicEmbedVisionV15(Embeddings):
+class NomicEmbedVisionV15EmbeddingModel(Embeddings):
     """
     nomic基础的multi-modal-embedding-model。
 
