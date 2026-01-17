@@ -1,10 +1,12 @@
 """
 Sources:
+    https://github.com/yuliu625/Yu-RAG-Toolkit/langchain_storing/chroma_vector_store_builder.py
 
 References:
     https://docs.langchain.com/oss/python/integrations/vectorstores
 
 Synopsis:
+    基于chroma实现的多模态vector_store的构建ChromaVectorStore方法。
 
 Notes:
 
@@ -72,7 +74,7 @@ class ChromaVectorStoreBuilder:
         persist_directory: str | Path,
         embedding_function: Embeddings,
         documents: list[Document],
-        metadatas: list[dict]
+        metadatas: list[dict],
     ) -> VectorStore:
         # 路径处理。
         persist_directory = Path(persist_directory)
