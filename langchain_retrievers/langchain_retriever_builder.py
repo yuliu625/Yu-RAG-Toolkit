@@ -1,12 +1,20 @@
 """
 Sources:
+    https://github.com/yuliu625/Yu-RAG-Toolkit/langchain_retrievers/langchain_retriever_builder.py
 
 References:
     https://docs.langchain.com/oss/python/integrations/retrievers
 
 Synopsis:
+    构造langchain classic下的retriever的方法。
 
 Notes:
+    基于as_retriever方法，构造多为通过可序列参数进行声明。
+
+    langchain_classic.retrievers存在的问题是:
+        - as_retriever方法文档不清晰。
+        - 具体实现的方法多样，BaseRetriever实现困难。
+
     以下方法仅供参考。对于复杂的RAG，可以基于langgraph进行构建。
 """
 
