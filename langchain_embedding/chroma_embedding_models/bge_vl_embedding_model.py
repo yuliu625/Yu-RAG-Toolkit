@@ -1,11 +1,21 @@
 """
+Sources:
+
+References:
+    https://huggingface.co/BAAI/BGE-VL-large
+
+Synopsis:
+
+Notes:
+
 BGE基础的multi-modal-embedding-model。
 
 原始模型以及代码来源:
-https://huggingface.co/BAAI/BGE-VL-large
+
 """
 
 from __future__ import annotations
+from loguru import logger
 
 from langchain_core.embeddings import Embeddings
 
@@ -17,7 +27,7 @@ from typing import TYPE_CHECKING
 # if TYPE_CHECKING:
 
 
-class BGEVL(Embeddings):
+class BGEVLEmbeddingModel(Embeddings):
     """
     BGE基础的multi-modal-embedding-model。
     """
