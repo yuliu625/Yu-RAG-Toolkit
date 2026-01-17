@@ -1,10 +1,19 @@
 """
+Sources:
+
+References:
+
+Synopsis:
+
+Notes:
+
 一个假的embedding-model。
 
 用于测试，以及暂时存储原始documents为document-store。
 """
 
 from __future__ import annotations
+from loguru import logger
 
 from langchain_core.embeddings import Embeddings
 
