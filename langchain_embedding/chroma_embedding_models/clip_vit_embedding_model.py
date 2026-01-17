@@ -1,4 +1,12 @@
 """
+Sources:
+
+References:
+
+Synopsis:
+
+Notes:
+
 以CLIP实现的multi-modal-embedding-model。
 
 原始模型以及代码来源:
@@ -6,6 +14,7 @@ https://huggingface.co/openai/clip-vit-large-patch14
 """
 
 from __future__ import annotations
+from loguru import logger
 
 from langchain_core.embeddings import Embeddings
 from transformers import CLIPProcessor, CLIPModel
