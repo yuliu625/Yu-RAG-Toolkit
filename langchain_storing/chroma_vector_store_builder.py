@@ -32,6 +32,16 @@ class ChromaVectorStoreBuilder:
         persist_directory: str | Path,
         embedding_function: Embeddings,
     ) -> VectorStore:
+        """
+        直接从本地加载vector_store，不做任何处理。
+
+        Args:
+            persist_directory:
+            embedding_function:
+
+        Returns:
+            VectorStore:
+        """
         # 路径处理。
         persist_directory = Path(persist_directory)
         if persist_directory.exists():
@@ -92,6 +102,62 @@ class ChromaVectorStoreBuilder:
         ## 具体的，可以以add_texts和add_images实现。
         vector_store.add_documents(
             documents=documents,
+            metadatas=metadatas,
+        )
+        return vector_store
+
+    # ====示例方法。====
+    @staticmethod
+    def build_new_vector_store_via_texts(
+        persist_directory: str | Path,
+        embedding_function: Embeddings,
+        texts: list[str],
+        metadatas: list[dict],
+    ) -> VectorStore:
+        # 路径处理。
+        persist_directory = Path(persist_directory)
+        if persist_directory.exists():
+            # 可能会出现问题的情况。已经构建过vector store。
+            logger.warning(f"Persist directory {persist_directory} already exists.")
+        else:
+            # 新构建的vector store。
+            logger.info(f"New Vector Store in {persist_directory}.")
+        vector_store = Chroma(
+            persist_directory=str(persist_directory),
+            embedding_function=embedding_function,
+        )
+        # 示例方法。
+        ## 具体的，可以以add_texts和add_images实现。
+        vector_store.add_texts(
+            texts=texts,
+            metadatas=metadatas,
+        )
+        return vector_store
+
+    # ====示例方法。====
+    @staticmethod
+    def build_new_vector_store_via_image_uri(
+        persist_directory: str | Path,
+        embedding_function: Embeddings,
+        image_uris: list[str],
+        metadatas: list[dict],
+    ) -> VectorStore:
+        # 路径处理。
+        persist_directory = Path(persist_directory)
+        if persist_directory.exists():
+            # 可能会出现问题的情况。已经构建过vector store。
+            logger.warning(f"Persist directory {persist_directory} already exists.")
+        else:
+            # 新构建的vector store。
+            logger.info(f"New Vector Store in {persist_directory}.")
+        vector_store = Chroma(
+            persist_directory=str(persist_directory),
+            embedding_function=embedding_function,
+        )
+        # 示例方法。
+        ## 具体的，可以以add_texts和add_images实现。
+        vector_store.add_images(
+            uris=image_uris,
             metadatas=metadatas,
         )
         return vector_store
