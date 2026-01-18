@@ -27,6 +27,7 @@ class TestMarkdownSplittingMethods:
             ("#", "Header 1"),
             ("##", "Header 2"),
             ("###", "Header 3"),
+            ("####", "Header 4"),
         ]
         is_strip_headers: bool = False
         target_document = TextLoadingMethods.load_text(
