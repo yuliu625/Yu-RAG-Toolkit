@@ -12,8 +12,10 @@ Notes:
 """
 
 from __future__ import annotations
+from loguru import logger
 
 from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_ollama import OllamaEmbeddings
 import os
 
 from typing import TYPE_CHECKING
@@ -26,15 +28,18 @@ class EmbeddingModelFactory:
     基础的embedding-model-factory。
     """
     @staticmethod
-    def create_huggingface_embedding_model(
+    def create_ollama_embedding_model(
 
     ) -> Embeddings:
         raise NotImplementedError
 
     @staticmethod
-    def create_multi_modal_embedding_model(
-
+    def create_huggingface_embedding_model(
+        model_name_or_path: str,
     ) -> Embeddings:
+        embedding_model = HuggingFaceEmbeddings(
+            model_name=model_name_or_path,
+        )
         raise NotImplementedError
 
 
