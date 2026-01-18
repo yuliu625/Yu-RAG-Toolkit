@@ -18,7 +18,8 @@ if TYPE_CHECKING:
 class TestChromaVectorStoreBuilder:
     @pytest.mark.parametrize(
         "persist_directory, embedding_function", [
-        (r"D:\dataset\smart\tests\t_vector_store", EmbeddingModelFactory.create_ollama_embedding_model('nomic-embed-text', None, None, None, None, None,)),
+        (r"D:\dataset\smart\tests\t_vector_store",
+         EmbeddingModelFactory.create_ollama_embedding_model('nomic-embed-text', None, None, None, None, None,)),
     ])
     def test_load_vector_store(
         self,
