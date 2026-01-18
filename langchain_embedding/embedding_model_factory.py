@@ -16,7 +16,7 @@ from loguru import logger
 
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_ollama import OllamaEmbeddings
-import os
+from langchain_openai import OpenAIEmbeddings
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
@@ -26,6 +26,8 @@ if TYPE_CHECKING:
 class EmbeddingModelFactory:
     """
     基础的embedding-model-factory。
+
+    在目前的langchain体系中，embedding-model是仅基于文本的单模态模型。
     """
     @staticmethod
     def create_ollama_embedding_model(
@@ -45,7 +47,7 @@ class EmbeddingModelFactory:
             model_name:
             repeat_penalty:
             temperature:
-            stop_tokens: 
+            stop_tokens:
             top_k:
             top_p:
 
@@ -102,6 +104,15 @@ class EmbeddingModelFactory:
             is_show_progress=is_show_progress,
         )
         return embedding_model
+
+    @staticmethod
+    def create_openai_embeddings_model(
+        model_name: str,
+    ) -> Embeddings:
+        embedding_model = OpenAIEmbeddings(
+            model=model_name,
+        )
+        raise NotImplementedError
 
 
 class CachedEmbeddingModelFactory:
