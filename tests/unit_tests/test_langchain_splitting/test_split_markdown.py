@@ -14,7 +14,10 @@ from typing import TYPE_CHECKING
 
 
 class TestMarkdownSplittingMethods:
-    @pytest.mark.parametrize()
+    @pytest.mark.parametrize(
+        'markdown_file_path', [
+        (r"D:\dataset\smart\tests\pymupdf_1\000004.md"),
+    ])
     def test_split_markdown_by_header(
         self,
         markdown_file_path: str,
@@ -23,6 +26,7 @@ class TestMarkdownSplittingMethods:
         headers_to_split_on = [
             ("#", "Header 1"),
             ("##", "Header 2"),
+            ("###", "Header 3"),
         ]
         is_strip_headers: bool = False
         target_document = TextLoadingMethods.load_text(
@@ -35,4 +39,7 @@ class TestMarkdownSplittingMethods:
             headers_to_split_on=headers_to_split_on,
             is_strip_headers=is_strip_headers,
         )
+        logger.info(f"\nNumber of documents: {len(result_documents)}")
+        logger.info(f"\nDocument 1: \n{result_documents}")
+        logger.info(f"\nDocument 2: \n{result_documents}")
 
