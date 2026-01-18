@@ -29,10 +29,36 @@ class EmbeddingModelFactory:
     """
     @staticmethod
     def create_ollama_embedding_model(
-
+        model_name: str,
+        repeat_penalty: float | None,
+        temperature: float | None,
+        stop_tokens: list[str] | None,
+        top_k: int | None,
+        top_p: float | None,
     ) -> Embeddings:
-        embedding_model = OllamaEmbeddings(
+        """
+        基于Ollama中的OllamaEmbeddings的embedding-model。
 
+        ollama已经有很好的实现和推理，这里仅指出重要args。
+
+        Args:
+            model_name:
+            repeat_penalty:
+            temperature:
+            stop_tokens: 
+            top_k:
+            top_p:
+
+        Returns:
+            Embeddings:
+        """
+        embedding_model = OllamaEmbeddings(
+            model=model_name,
+            repeat_penalty=repeat_penalty,
+            temperature=temperature,
+            stop=stop_tokens,
+            top_k=top_k,
+            top_p=top_p,
         )
         return embedding_model
 
