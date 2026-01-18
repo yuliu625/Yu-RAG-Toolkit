@@ -42,7 +42,7 @@ class ChromaMultiModalEmbeddingModel(Embeddings):
         - 更一般的方法。将embed_text方法以其他模态embedding-model实现，例如传入已通过base64编码的str，后续编码和获取结果以metadate实现。
     """
 
-    # ====abstract method of langchain_core.Embeddings.====
+    # ====Abstract method of langchain_core::Embeddings.====
     def embed_documents(
         self,
         texts: list[str],
@@ -54,7 +54,7 @@ class ChromaMultiModalEmbeddingModel(Embeddings):
         """
         return self.embed_text(texts)
 
-    # ====abstract method of langchain_core.Embeddings.====
+    # ====Abstract method of langchain_core::Embeddings.====
     def embed_query(
         self,
         text: str,
@@ -66,7 +66,7 @@ class ChromaMultiModalEmbeddingModel(Embeddings):
         """
         return self.embed_text([text])[0]
 
-    # ====abstract method of langchain_chroma.Embeddings.====
+    # ====Abstract method of langchain_chroma::Embeddings.====
     @abstractmethod
     def embed_text(
         self,
@@ -77,7 +77,7 @@ class ChromaMultiModalEmbeddingModel(Embeddings):
         """
         return [[0.0] for _ in range(len(inputs))]
 
-    # ====abstract method of langchain_chroma.Embeddings.====
+    # ====Abstract method of langchain_chroma::Embeddings.====
     @abstractmethod
     def embed_image(
         self,
