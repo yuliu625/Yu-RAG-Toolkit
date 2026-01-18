@@ -37,6 +37,7 @@ class MarkdownSplittingMethods:
             ("#", "Header 1"),
             ("##", "Header 2"),
             ("###", "Header 3"),
+            ("####", "Header 4"),
         ]
         # is_strip_headers = False
         splitter = MarkdownHeaderTextSplitter(
@@ -47,6 +48,7 @@ class MarkdownSplittingMethods:
         documents = splitter.split_text(
             text=document.page_content,
         )
+        logger.trace(f"Documents: \n{documents}")
         return documents
 
     @staticmethod
