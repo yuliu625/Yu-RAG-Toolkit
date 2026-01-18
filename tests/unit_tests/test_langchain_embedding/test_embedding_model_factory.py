@@ -39,3 +39,26 @@ class TestEmbeddingModelFactory:
         logger.info(f"\nText Embedding Dim: {len(text_embedding)}")
         logger.info(f"\nText embedding: \n{text_embedding}")
 
+    @pytest.mark.parametrize(
+        "model_name_or_path, model_kwargs, encode_kwargs, query_encode_kwargs, is_multi_process, cache_folder, is_show_progress", [
+        (r'', {}, {}, {}, False, None, True),
+    ])
+    def test_create_huggingface_embedding_model(
+        self,
+        model_name_or_path: str,
+        model_kwargs: dict,
+        encode_kwargs: dict,
+        query_encode_kwargs: dict,
+        is_multi_process: bool,
+        cache_folder: str | None,
+        is_show_progress: bool,
+    ):
+        ...
+
+    @pytest.mark.parametrize()
+    def test_create_openai_embedding_model(
+        self,
+        model_name: str,
+    ):
+        ...
+
