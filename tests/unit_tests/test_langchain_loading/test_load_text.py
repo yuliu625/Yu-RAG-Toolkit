@@ -15,7 +15,7 @@ from typing import TYPE_CHECKING
 class TestTextLoadingMethods:
     @pytest.mark.parametrize(
         'text_path', [
-        (r""),
+        (r"D:\dataset\smart\tests\pymupdf_1\000004.md"),
     ])
     def test_load_text(
         self,
@@ -29,4 +29,5 @@ class TestTextLoadingMethods:
             encoding=encoding,
             is_autodetect_encoding=is_autodetect_encoding,
         )
+        logger.info(f"\nDocument: \n {document}")
 
