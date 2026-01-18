@@ -48,9 +48,12 @@ class ChromaMultiModalEmbeddingModel(Embeddings):
         texts: list[str],
     ) -> list[list[float]]:
         """
-        使用embed_text实现对文档的编码。
+        对documents进行编码。
 
-        也就是说，默认存储的是text。
+        默认实现认为documents存储的是字符串，调用批量编码文本的方法。
+
+        可进行的修改:
+            - 对于单独的其他模态，存储内容为以str代表的uri。加入IO操作，实现多模态编码。
         """
         return self.embed_text(texts)
 
@@ -60,13 +63,14 @@ class ChromaMultiModalEmbeddingModel(Embeddings):
         text: str,
     ) -> list[float]:
         """
-        使用embed_text实现对文档的编码。
+        对query进行编码。
 
-        也就是说，默认查询的是text。
+        常见约定query为文本。
+        默认实现调用编码文本方法。
         """
         return self.embed_text([text])[0]
 
-    # ====Abstract method of langchain_chroma::Embeddings.====
+    # ====Abstract method of langchain_chroma::Chroma.====
     @abstractmethod
     def embed_text(
         self,
@@ -77,7 +81,7 @@ class ChromaMultiModalEmbeddingModel(Embeddings):
         """
         return [[0.0] for _ in range(len(inputs))]
 
-    # ====Abstract method of langchain_chroma::Embeddings.====
+    # ====Abstract method of langchain_chroma::Chroma.====
     @abstractmethod
     def embed_image(
         self,
@@ -87,8 +91,12 @@ class ChromaMultiModalEmbeddingModel(Embeddings):
         批量编码batch的图像。
 
         chroma内部的实现，使用Image通过uri读取图像，会将编码结果转换为base64的字符串。
-        不好处是很死板。
-        好处是文档存储和向量存储在一起，没有连接，查询结果直接使用base64可直接得到原始图片。
+
+        该解决方案的特性:
+            - 优点:
+                - 文档存储和向量存储在一起，没有连接，查询结果直接使用base64可直接得到原始图片。
+            - 缺点:
+                - 死板。其实有其他可选解决方案。
         """
         return [[0.0] for _ in range(len(uris))]
 
