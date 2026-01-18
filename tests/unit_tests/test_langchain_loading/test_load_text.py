@@ -29,5 +29,5 @@ class TestTextLoadingMethods:
             encoding=encoding,
             is_autodetect_encoding=is_autodetect_encoding,
         )
-        logger.info(f"\nDocument: \n {document}")
+        logger.info(f"\nDocument: \n{document}")
 
