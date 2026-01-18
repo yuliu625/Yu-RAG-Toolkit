@@ -1,13 +1,19 @@
 """
-langchain_chroma源代码中为多模态需要实现的方法。
+Sources:
 
-需要:
-```python
-from langchain_chroma import Chroma
-```
+References:
 
-chroma是我目前主要使用的本地嵌入式数据库，但是langchain中的Embeddings这个interface暂未支持多模态，而chroma已经有少量支持。
-chroma默认将图片以base64进行编码，以字符串进行存储。
+Synopsis:
+    langchain_chroma源代码中为多模态需要实现的方法。
+
+Notes:
+    需要:
+    ```python
+    from langchain_chroma import Chroma
+    ```
+
+    chroma是我目前主要使用的本地嵌入式数据库，但是langchain中的Embeddings这个interface暂未支持多模态，而chroma已经有少量支持。
+    chroma默认将图片以base64进行编码，以字符串进行存储。
 """
 
 from __future__ import annotations
@@ -36,7 +42,11 @@ class ChromaMultiModalEmbeddingModel(Embeddings):
         - 更一般的方法。将embed_text方法以其他模态embedding-model实现，例如传入已通过base64编码的str，后续编码和获取结果以metadate实现。
     """
 
-    def embed_documents(self, texts: list[str]) -> list[list[float]]:
+    # ====abstract method of langchain_core.Embeddings.====
+    def embed_documents(
+        self,
+        texts: list[str],
+    ) -> list[list[float]]:
         """
         使用embed_text实现对文档的编码。
 
@@ -44,7 +54,11 @@ class ChromaMultiModalEmbeddingModel(Embeddings):
         """
         return self.embed_text(texts)
 
-    def embed_query(self, text: str) -> list[float]:
+    # ====abstract method of langchain_core.Embeddings.====
+    def embed_query(
+        self,
+        text: str,
+    ) -> list[float]:
         """
         使用embed_text实现对文档的编码。
 
@@ -52,6 +66,7 @@ class ChromaMultiModalEmbeddingModel(Embeddings):
         """
         return self.embed_text([text])[0]
 
+    # ====abstract method of langchain_chroma.Embeddings.====
     @abstractmethod
     def embed_text(
         self,
@@ -62,6 +77,7 @@ class ChromaMultiModalEmbeddingModel(Embeddings):
         """
         return [[0.0] for _ in range(len(inputs))]
 
+    # ====abstract method of langchain_chroma.Embeddings.====
     @abstractmethod
     def embed_image(
         self,
