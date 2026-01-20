@@ -2,11 +2,19 @@
 Sources:
 
 References:
+    https://docs.langchain.com/oss/python/integrations/retrievers
 
 Synopsis:
+    基于langgraph构建retriever的protocol。
 
 Notes:
+    为广泛的兼容性，基于langgraph的实现依然要求:
+        - Input: str
+        - Output: list[Document]
 
+    为了灵活的实现选择，我定义了:
+        - 基于interface的强制实现要求。
+        - 基于protocol的类型标注形式。
 """
 
 from __future__ import annotations
