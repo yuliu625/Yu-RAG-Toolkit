@@ -43,6 +43,8 @@ class SimpleRetriever:
         query: str,
         search_configs: dict,
     ) -> list[Document]:
+        logger.debug(f"Query: {query}")
+        logger.debug(f"Search Configs: \n{search_configs}")
         result_documents = await self._vector_store.asimilarity_search(
             query=query,
             **search_configs,
@@ -57,6 +59,8 @@ class SimpleRetriever:
         query: str,
         search_configs: dict,
     ) -> list[Document]:
+        logger.debug(f"Query: {query}")
+        logger.debug(f"Search Configs: \n{search_configs}")
         result_documents = await self._vector_store.amax_marginal_relevance_search(
             query=query,
             **search_configs,
