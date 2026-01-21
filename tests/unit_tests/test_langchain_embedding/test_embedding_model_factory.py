@@ -15,12 +15,13 @@ if TYPE_CHECKING:
 
 class TestEmbeddingModelFactory:
     @pytest.mark.parametrize(
-        "model_name, repeat_penalty, temperature, stop_tokens, top_k, top_p", [
-        ('nomic-embed-text', None, None, None, None, None),
+        "model_name, num_ctx, repeat_penalty, temperature, stop_tokens, top_k, top_p", [
+        ('nomic-embed-text', None, None, None, None, None, None),
     ])
     def test_create_ollama_embedding_model(
         self,
         model_name: str,
+        num_ctx: int | None,
         repeat_penalty: float | None,
         temperature: float | None,
         stop_tokens: list[str] | None,
@@ -29,6 +30,7 @@ class TestEmbeddingModelFactory:
     ):
         embedding_model = EmbeddingModelFactory.create_ollama_embedding_model(
             model_name=model_name,
+            num_ctx=num_ctx,
             repeat_penalty=repeat_penalty,
             temperature=temperature,
             stop_tokens=stop_tokens,
@@ -66,7 +68,7 @@ class TestEmbeddingModelFactory:
         logger.info(f"\nText Embedding Dim: {len(text_embedding)}")
         logger.info(f"\nText embedding: \n{text_embedding}")
 
-    @pytest.mark.parametrize()
+    # @pytest.mark.parametrize()
     def test_create_openai_embedding_model(
         self,
         model_name: str,
