@@ -18,7 +18,7 @@ if TYPE_CHECKING:
 
 
 # HACK: 待整合进fixtures。
-def make_documents():
+def make_test_documents():
     # HARDCODED
     document = TextLoadingMethods.load_text(
         text_path=r"D:\dataset\smart\tests\docling_1\000004.md",
@@ -39,11 +39,26 @@ def make_documents():
     return documents
 
 
+# HACK: 待整合进fixtures。
+def make_test_embedding_model():
+    # HARDCODED
+    embedding_model = EmbeddingModelFactory.create_ollama_embedding_model(
+        model_name="nomic-embed-text",
+        num_ctx=None,
+        repeat_penalty=None,
+        temperature=None,
+        stop_tokens=None,
+        top_k=None,
+        top_p=None,
+    )
+    return embedding_model
+
+
 class TestChromaVectorStoreBuilder:
     @pytest.mark.parametrize(
         "persist_directory, embedding_function", [
         (r"D:\dataset\smart\tests\t_vector_store",
-         EmbeddingModelFactory.create_ollama_embedding_model('nomic-embed-text', None, None, None, None, None,)),
+         make_test_embedding_model(),),
     ])
     def test_load_vector_store(
         self,
@@ -59,7 +74,7 @@ class TestChromaVectorStoreBuilder:
     @pytest.mark.parametrize(
         "persist_directory, embedding_function", [
         (r"D:\dataset\smart\tests\t_vector_store",
-         EmbeddingModelFactory.create_ollama_embedding_model('nomic-embed-text', None, None, None, None, None,)),
+         make_test_embedding_model(),),
     ])
     def test_vector_store_methods(
         self,
@@ -111,8 +126,8 @@ class TestChromaVectorStoreBuilder:
     @pytest.mark.parametrize(
         "persist_directory, embedding_function, documents", [
         (r"D:\dataset\smart\tests\t_vector_store",
-         EmbeddingModelFactory.create_ollama_embedding_model('nomic-embed-text', None, None, None, None, None,),
-         make_documents(),),
+         make_test_embedding_model(),
+         make_test_documents(),),
     ])
     def test_build_new_vector_store_via_default_method(
         self,
