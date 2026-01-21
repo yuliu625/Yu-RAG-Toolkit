@@ -32,6 +32,7 @@ class EmbeddingModelFactory:
     @staticmethod
     def create_ollama_embedding_model(
         model_name: str,
+        num_ctx: int | None,
         repeat_penalty: float | None,
         temperature: float | None,
         stop_tokens: list[str] | None,
@@ -45,6 +46,7 @@ class EmbeddingModelFactory:
 
         Args:
             model_name:
+            num_ctx:
             repeat_penalty:
             temperature:
             stop_tokens:
@@ -56,6 +58,7 @@ class EmbeddingModelFactory:
         """
         embedding_model = OllamaEmbeddings(
             model=model_name,
+            num_ctx=num_ctx,
             repeat_penalty=repeat_penalty,
             temperature=temperature,
             stop=stop_tokens,
