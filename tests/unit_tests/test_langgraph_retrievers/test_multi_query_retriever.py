@@ -1,12 +1,5 @@
 """
-Sources:
-
-References:
-
-Synopsis:
-
-Notes:
-
+对于multi-query retriever的测试。
 """
 
 from __future__ import annotations
@@ -74,5 +67,26 @@ class TestMultiQueryRetriever:
         )
         logger.info(f"\nRewritten Queries: \n{rewritten_queries}\n")
 
-
+    @pytest.mark.parametrize(
+        "vector_store, structured_llm, structured_llm_system_message", [
+        (build_test_vector_store(), build_test_structured_llm(), _structured_llm_system_message),
+    ])
+    @pytest.mark.asyncio
+    async def test_multi_query_retriever_parallel_search(
+        self,
+        vector_store: VectorStore,
+        structured_llm: BaseChatModel,
+        structured_llm_system_message: SystemMessage,
+    ):
+        multi_query_retriever = MultiQueryRetriever(
+            vector_store=vector_store,
+            structured_llm=structured_llm,
+            structured_llm_system_message=structured_llm_system_message,
+        )
+        result_documents = await multi_query_retriever.parallel_search_documents_by_mmr(
+            query="公司当前的风险因素在哪里？",
+            search_configs={},
+        )
+        logger.info(f"\nDocument Number: {len(result_documents)}")
+        logger.info(f"\nResult Documents: \n{result_documents}\n")
 
