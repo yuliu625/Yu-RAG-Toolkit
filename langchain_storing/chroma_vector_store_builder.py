@@ -73,7 +73,7 @@ class ChromaVectorStoreBuilder:
             logger.info(f"New Vector Store in {persist_directory}.")
         vector_store = Chroma.from_documents(
             persist_directory=str(persist_directory),
-            embeddings=embedding_function,
+            embedding=embedding_function,
             documents=documents,
         )
         return vector_store
