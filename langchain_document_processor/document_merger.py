@@ -1,11 +1,22 @@
 """
-组合documents的方法。
+Sources:
+    https://github.com/yuliu625/Yu-RAG-Toolkit/langchain_document_processor/document_merger.py
+
+References:
+    None
+
+Synopsis:
+    对文档内容进行合并的方法。
+
+Notes:
+
 """
 
 from __future__ import annotations
 
-from agnostic_utils.content_annotator import ContentAnnotator
-from agnostic_utils.content_block_processor import ContentBlockProcessor
+# 依赖的自构建工具。
+from langchain_document_processor.content_annotator import ContentAnnotator
+from langchain_document_processor.content_block_processor import ContentBlockProcessor
 
 from langchain_core.messages import HumanMessage
 
@@ -17,30 +28,22 @@ if TYPE_CHECKING:
 class DocumentMerger:
     # ====主要方法。====
     @staticmethod
-    def get_human_message(
+    def merge_documents(
         query: str,
-        text_documents: list[Document] | None = None,
-        image_documents: list[Document] | None = None,
+        text_documents: list[Document] | None,
+        image_documents: list[Document] | None,
     ) -> HumanMessage:
         if text_documents is not None and image_documents is None:
             # 仅文本文档的情况。
-            ...
+            raise NotImplementedError
         elif text_documents is None and image_documents is not None:
             # 仅图片文档的情况。
-            ...
+            raise NotImplementedError
         elif text_documents is not None and image_documents is not None:
             # 文本和图片模态都有的情况。
-            ...
+            raise NotImplementedError
         else:
-            raise
-
-    @staticmethod
-    def merge_multimodal_documents(
-        query: str,
-        text_documents: list[Document] | None = None,
-        image_documents: list[Document] | None = None,
-    ) -> list[Document]:
-        ...
+            raise NotImplementedError
 
     @staticmethod
     def merge_text_documents(
@@ -50,7 +53,7 @@ class DocumentMerger:
         for text_document in text_documents:
             document_text = ContentAnnotator.annotate_with_xml(
                 tag='document',
-                original_text=text_document.page_content
+                original_text=text_document.page_content,
             )
             document_text += '\n'
             text_content += document_text
@@ -66,4 +69,11 @@ class DocumentMerger:
         ]
         return image_content_blocks
 
+    @staticmethod
+    def merge_multimodal_documents(
+        query: str,
+        text_documents: list[Document] | None,
+        image_documents: list[Document] | None,
+    ) -> list[Document]:
+        raise NotImplementedError
 
