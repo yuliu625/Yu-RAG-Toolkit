@@ -54,10 +54,12 @@ class MultiQueryRetriever:
     def __init__(
         self,
         vector_store: VectorStore,
+        search_configs: dict,
         structured_llm: BaseChatModel,
         structured_llm_system_message: SystemMessage,
     ):
         self._vector_store = vector_store
+        self._search_configs = search_configs
         self._structured_llm = structured_llm
         self._structured_llm_system_message = structured_llm_system_message
 
