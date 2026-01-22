@@ -15,8 +15,8 @@ Notes:
 from __future__ import annotations
 
 # 依赖的自构建工具。
-from langchain_document_processor.content_annotator import ContentAnnotator
-from langchain_document_processor.content_block_processor import ContentBlockProcessor
+from langchain_document_processing.content_annotator import ContentAnnotator
+from langchain_document_processing.content_block_processor import ContentBlockProcessor
 
 from langchain_core.messages import HumanMessage
 
