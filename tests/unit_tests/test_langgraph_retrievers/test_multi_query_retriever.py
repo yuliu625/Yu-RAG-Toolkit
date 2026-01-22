@@ -47,18 +47,20 @@ def build_test_structured_llm():
 
 class TestMultiQueryRetriever:
     @pytest.mark.parametrize(
-        "vector_store, structured_llm, structured_llm_system_message", [
-        (build_test_vector_store(), build_test_structured_llm(), _structured_llm_system_message),
+        "vector_store, search_configs, structured_llm, structured_llm_system_message", [
+        (build_test_vector_store(), {}, build_test_structured_llm(), _structured_llm_system_message),
     ])
     @pytest.mark.asyncio
     async def test_multi_query_retriever_rewrite_query(
         self,
         vector_store: VectorStore,
+        search_configs: dict,
         structured_llm: BaseChatModel,
         structured_llm_system_message: SystemMessage,
     ):
         multi_query_retriever = MultiQueryRetriever(
             vector_store=vector_store,
+            search_configs=search_configs,
             structured_llm=structured_llm,
             structured_llm_system_message=structured_llm_system_message,
         )
@@ -68,18 +70,20 @@ class TestMultiQueryRetriever:
         logger.info(f"\nRewritten Queries: \n{rewritten_queries}\n")
 
     @pytest.mark.parametrize(
-        "vector_store, structured_llm, structured_llm_system_message", [
-        (build_test_vector_store(), build_test_structured_llm(), _structured_llm_system_message),
+        "vector_store, search_configs, structured_llm, structured_llm_system_message", [
+        (build_test_vector_store(), {}, build_test_structured_llm(), _structured_llm_system_message),
     ])
     @pytest.mark.asyncio
     async def test_multi_query_retriever_parallel_search(
         self,
         vector_store: VectorStore,
+        search_configs: dict,
         structured_llm: BaseChatModel,
         structured_llm_system_message: SystemMessage,
     ):
         multi_query_retriever = MultiQueryRetriever(
             vector_store=vector_store,
+            search_configs=search_configs,
             structured_llm=structured_llm,
             structured_llm_system_message=structured_llm_system_message,
         )
