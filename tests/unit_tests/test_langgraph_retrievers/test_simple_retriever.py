@@ -18,7 +18,15 @@ if TYPE_CHECKING:
 def build_test_vector_store():
     vector_store = ChromaVectorStoreBuilder.load_vector_store(
         persist_directory=r"D:\dataset\smart\tests\t_vector_store",
-        embedding_function=EmbeddingModelFactory.create_ollama_embedding_model('nomic-embed-text', None, None, None, None, None,),
+        embedding_function=EmbeddingModelFactory.create_ollama_embedding_model(
+            'nomic-embed-text',
+            None,
+            None,
+            None,
+            None,
+            None,
+            None,
+        ),
     )
     return vector_store
 
