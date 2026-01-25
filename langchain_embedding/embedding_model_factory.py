@@ -104,7 +104,7 @@ class EmbeddingModelFactory:
             query_encode_kwargs=query_encode_kwargs,
             multi_process=is_multi_process,
             cache_folder=cache_folder,
-            is_show_progress=is_show_progress,
+            show_progress=is_show_progress,
         )
         return embedding_model
 
