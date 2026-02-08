@@ -1,5 +1,5 @@
 """
-jinnai
+jinaai
 """
 
 from __future__ import annotations
