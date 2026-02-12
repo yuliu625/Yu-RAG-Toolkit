@@ -31,7 +31,7 @@ class ChromaVectorStoreBuilder:
     def load_vector_store(
         persist_directory: str | Path,
         embedding_function: Embeddings,
-    ) -> VectorStore:
+    ) -> Chroma:
         """
         直接从本地加载vector_store，不做任何处理。
 
@@ -40,7 +40,7 @@ class ChromaVectorStoreBuilder:
             embedding_function:
 
         Returns:
-            VectorStore:
+            Chroma:
         """
         # 路径处理。
         persist_directory = Path(persist_directory)
@@ -62,7 +62,7 @@ class ChromaVectorStoreBuilder:
         persist_directory: str | Path,
         embedding_function: Embeddings,
         documents: list[Document],
-    ) -> VectorStore:
+    ) -> Chroma:
         # 路径处理。
         persist_directory = Path(persist_directory)
         if persist_directory.exists():
@@ -85,7 +85,7 @@ class ChromaVectorStoreBuilder:
         embedding_function: Embeddings,
         documents: list[Document],
         metadatas: list[dict],
-    ) -> VectorStore:
+    ) -> Chroma:
         # 路径处理。
         persist_directory = Path(persist_directory)
         if persist_directory.exists():
@@ -113,7 +113,7 @@ class ChromaVectorStoreBuilder:
         embedding_function: Embeddings,
         texts: list[str],
         metadatas: list[dict],
-    ) -> VectorStore:
+    ) -> Chroma:
         # 路径处理。
         persist_directory = Path(persist_directory)
         if persist_directory.exists():
@@ -141,7 +141,7 @@ class ChromaVectorStoreBuilder:
         embedding_function: Embeddings,
         image_uris: list[str],
         metadatas: list[dict],
-    ) -> VectorStore:
+    ) -> Chroma:
         # 路径处理。
         persist_directory = Path(persist_directory)
         if persist_directory.exists():
