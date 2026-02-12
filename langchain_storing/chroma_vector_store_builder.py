@@ -9,7 +9,7 @@ Synopsis:
     基于chroma实现的多模态vector_store的构建ChromaVectorStore方法。
 
 Notes:
-
+    ChromaDB 通用并且基础，适用于初始简单测试。
 """
 
 from __future__ import annotations
