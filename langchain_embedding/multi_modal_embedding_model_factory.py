@@ -1,5 +1,6 @@
 """
 Sources:
+    https://github.com/yuliu625/Yu-RAG-Toolkit/langchain_embedding/multi_modal_embedding_model_factory.py
 
 References:
 
