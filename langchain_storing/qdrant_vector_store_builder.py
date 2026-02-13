@@ -66,7 +66,7 @@ class QdrantVectorStoreBuilder:
         client = QdrantClient(
             url=url,
         )
-        raise NotImplementedError
+        raise NotImplementedError("暂未有部署服务的需求。")
 
     @staticmethod
     def load_vector_store_from_memory(
@@ -75,7 +75,7 @@ class QdrantVectorStoreBuilder:
         embedding_model: Embeddings,
     ) -> QdrantVectorStore:
         client = QdrantClient(':memory:')
-        raise NotImplementedError
+        raise NotImplementedError("仅内存中的控制暂时没有需求。")
 
     @staticmethod
     def build_new_vector_store_via_documents(
