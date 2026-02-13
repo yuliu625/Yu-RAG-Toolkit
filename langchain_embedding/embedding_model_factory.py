@@ -1,5 +1,6 @@
 """
 Sources:
+    https://github.com/yuliu625/Yu-RAG-Toolkit/langchain_embedding/embedding_model_factory.py
 
 References:
     https://docs.langchain.com/oss/python/integrations/text_embedding
@@ -8,7 +9,9 @@ Synopsis:
     基于langchain的embedding-model-factory。
 
 Notes:
+    常见的 embedding model factory 。
 
+    符合 langchain_core.embeddings::Embeddings 的方法。
 """
 
 from __future__ import annotations
