@@ -29,23 +29,55 @@ class BGEM3EmbeddingModel:
     def __init__(
         self,
         model_name_or_path: str,
+        batch_size: int,
     ):
-        self.model = BGEM3FlagModel(
+        self._model = BGEM3FlagModel(
             model_name_or_path=model_name_or_path,
             # HARDCODED
             use_fp16=True,
         )
+        self._batch_size = batch_size
+        # HARDCODED
+        ## 使用最大 context length 能力。
+        self._max_length = 8192
+        ## 测试使用，所有的 encode 方法的结果都返回。
+        self._return_dense = True
+        self._return_sparse = True
+        self._return_colbert_vecs = True
 
     def encode_queries(
         self,
         queries: Sequence[str],
     ) -> dict:
-        ...
+        # encode queries in different methods
+        results = self._model.encode_queries(
+            queries=list(queries),
+            return_dense=self._return_dense,
+            return_sparse=self._return_sparse,
+            return_colbert_vecs=self._return_colbert_vecs,
+        )
+        return dict(
+            dense=results['dense_vecs'],
+            sparse=results['lexical_weights'],
+            multi_vector=results['colbert_vecs'],
+        )
 
     def encode_texts(
         self,
         texts: Sequence[str],
     ) -> dict:
-        ...
-
+        # encode texts in different methods
+        results = self._model.encode(
+            sentences=list(texts),
+            batch_size=self._batch_size,
+            max_length=self._max_length,
+            return_dense=self._return_dense,
+            return_sparse=self._return_sparse,
+            return_colbert_vecs=self._return_colbert_vecs,
+        )
+        return dict(
+            dense=results['dense_vecs'],
+            sparse=results['lexical_weights'],
+            multi_vector=results['colbert_vecs'],
+        )
 
