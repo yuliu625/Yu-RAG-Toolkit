@@ -6,7 +6,7 @@ References:
     https://qdrant.tech/
 
 Synopsis:
-    直接对于 qdrant client 的方法。
+    直接对于 qdrant client 的创建方法。
 
 Notes:
     langchain 中对于 qdrant 操作有限制，直接对 client 的操作方法。
@@ -103,7 +103,13 @@ class QdrantClientBuilder:
         vectors_config: Mapping[str, VectorParams],
         sparse_vectors_config: Mapping[str, SparseVectorParams],
     ) -> QdrantClient:
-        ...
+        qdrant_client = QdrantClient(
+            path=str(path),
+            collection_name=collection_name,
+            vectors_config=vectors_config,
+            sparse_vectors_config=sparse_vectors_config,
+        )
+        return qdrant_client
 
     @staticmethod
     def load_client_from_url(
@@ -112,5 +118,11 @@ class QdrantClientBuilder:
         vectors_config: Mapping[str, VectorParams],
         sparse_vectors_config: Mapping[str, SparseVectorParams],
     ) -> QdrantClient:
-        ...
+        qdrant_client = QdrantClient(
+            url=url,
+            collection_name=collection_name,
+            vectors_config=vectors_config,
+            sparse_vectors_config=sparse_vectors_config,
+        )
+        return qdrant_client
 
