@@ -56,3 +56,20 @@ class QdrantVectorStoreWriter:
         )
         return client
 
+    @staticmethod
+    def add_collection(
+        client: QdrantClient,
+        collection_name: str,
+        # point_ids: Sequence[int],
+        vectors: Sequence[dict],
+        payload: Sequence[dict],
+    ) -> QdrantClient:
+        client.upload_collection(
+            collection_name=collection_name,
+            # HACK: 不传入ids，qdrant 自行生成随机 UUID 。
+            # ids=ids,
+            vectors=vectors,
+            payload=payload,
+        )
+        return client
+
