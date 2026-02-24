@@ -45,6 +45,24 @@ class BGEM3EmbeddingModel:
         self._return_sparse = True
         self._return_colbert_vecs = True
 
+    def encode_query(
+        self,
+        query: str,
+    ) -> dict:
+        # encode queries in different methods
+        results = self._model.encode_queries(
+            queries=[query],
+            return_dense=self._return_dense,
+            return_sparse=self._return_sparse,
+            return_colbert_vecs=self._return_colbert_vecs,
+        )
+        processed_result = self.process_raw_results(raw_results=results)
+        return dict(
+            dense=processed_result['dense'][0],
+            sparse=processed_result['sparse'][0],
+            multi_vector=processed_result['multi_vector'][0],
+        )
+
     def encode_queries(
         self,
         queries: Sequence[str],
@@ -56,11 +74,10 @@ class BGEM3EmbeddingModel:
             return_sparse=self._return_sparse,
             return_colbert_vecs=self._return_colbert_vecs,
         )
-        return dict(
-            dense=results['dense_vecs'],
-            sparse=results['lexical_weights'],
-            multi_vector=results['colbert_vecs'],
+        processed_result = self.process_raw_results(
+            raw_results=results,
         )
+        return processed_result
 
     def encode_texts(
         self,
@@ -75,9 +92,38 @@ class BGEM3EmbeddingModel:
             return_sparse=self._return_sparse,
             return_colbert_vecs=self._return_colbert_vecs,
         )
-        return dict(
-            dense=results['dense_vecs'],
-            sparse=results['lexical_weights'],
-            multi_vector=results['colbert_vecs'],
+        processed_result = self.process_raw_results(
+            raw_results=results,
         )
+        return processed_result
+
+    def process_raw_results(
+        self,
+        raw_results: dict,
+    ) -> dict[str, list]:
+        """
+        将 FlagEmbedding 返回的结果进行转换，统一为 python object 。
+
+        执行 2 项操作:
+            - np to list: 将格式不一致的 np 转换为统一的多维 list 。
+            - name mapping: 将晦涩和简写的 keys 进行统一转换。
+
+        Args:
+            raw_results (dict): FlagEmbedding 返回的原始结果。
+
+        Returns:
+            dict[str, list]: 转换后的结果。
+        """
+        processed_result = dict(
+            dense=raw_results['dense_vecs'].tolist(),
+            sparse=raw_results['lexical_weights'],
+            multi_vector=[
+                np_multi_vector.tolist()
+                for np_multi_vector in raw_results['colbert_vecs']
+            ],
+        )
+        assert isinstance(processed_result['dense'], list)
+        assert isinstance(processed_result['sparse'], list)
+        assert isinstance(processed_result['multi_vector'], list)
+        return processed_result
 
