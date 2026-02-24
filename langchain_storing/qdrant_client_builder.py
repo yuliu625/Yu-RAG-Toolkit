@@ -126,3 +126,13 @@ class QdrantClientBuilder:
         )
         return qdrant_client
 
+    @staticmethod
+    def load_client_from_memory(
+        collection_name: str,
+        vectors_config: Mapping[str, VectorParams],
+        sparse_vectors_config: Mapping[str, SparseVectorParams],
+    ) -> QdrantClient:
+        raise NotImplementedError(
+            "在内存中只会构建后就释放，不会有加载的方法。"
+        )
+
