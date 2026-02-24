@@ -14,17 +14,27 @@ Notes:
     Qdrant 加载方法:
         - langchain: QdrantVectorStore.from_existing_collection 。
         - client: 先构建 client ，然后传递给 QdrantVectorStore 。
+
+    约定:
+        - named vector: 无论是否使用多种编码方法，所有 vector 在构建时都指定名称。
 """
 
 from __future__ import annotations
 from loguru import logger
 
-from langchain_qdrant import QdrantVectorStore
+from langchain_qdrant import (
+    QdrantVectorStore,
+    RetrievalMode,
+)
 from qdrant_client import QdrantClient
-from qdrant_client.http.models import Distance, VectorParams
+from qdrant_client.http.models import (
+    Distance,
+    VectorParams,
+    SparseVectorParams,
+)
 from pathlib import Path
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Mapping
 if TYPE_CHECKING:
     from langchain_core.vectorstores import VectorStore
     from langchain_core.embeddings import Embeddings
@@ -36,7 +46,7 @@ class QdrantVectorStoreBuilder:
     def load_vector_store_from_disk(
         path: str | Path,
         collection_name: str,
-        embedding_model: Embeddings,
+        # embedding_model: Embeddings | None = None,
     ) -> QdrantVectorStore:
         # 路径处理
         path = Path(path)
@@ -52,7 +62,7 @@ class QdrantVectorStoreBuilder:
         vector_store = QdrantVectorStore.from_existing_collection(
             path=str(path),
             collection_name=collection_name,  # 约定: 默认为 default_name 。
-            embedding=embedding_model,
+            # embedding=embedding_model,  # 简单方法: 这里仅是默认 dense 检索，复杂情况应该独立以 vector 搜索。
         )
         return vector_store
 
@@ -60,29 +70,33 @@ class QdrantVectorStoreBuilder:
     def load_vector_store_from_url(
         url: str,
         collection_name: str,
-        vectors_config: VectorParams,
-        embedding_model: Embeddings,
+        # vectors_config: VectorParams,
+        # embedding_model: Embeddings | None = None,
     ) -> QdrantVectorStore:
         client = QdrantClient(
             url=url,
         )
-        raise NotImplementedError("暂未有部署服务的需求。")
+        raise NotImplementedError(
+            "暂未有部署服务的需求。"
+        )
 
     @staticmethod
     def load_vector_store_from_memory(
         collection_name: str,
-        vectors_config: VectorParams,
-        embedding_model: Embeddings,
+        # vectors_config: VectorParams,
+        # embedding_model: Embeddings | None = None,
     ) -> QdrantVectorStore:
         client = QdrantClient(':memory:')
-        raise NotImplementedError("仅内存中的控制暂时没有需求。")
+        raise NotImplementedError(
+            "在内存中应该是直接使用，而不是去加载。"
+        )
 
     @staticmethod
     def build_new_vector_store_via_documents(
         path: str | Path,
         collection_name: str,
         embedding_model: Embeddings,
-        vectors_config: VectorParams,
+        vectors_config: Mapping[str, VectorParams],
         documents: list[Document],
     ) -> QdrantVectorStore:
         # 路径处理
