@@ -100,14 +100,14 @@ class QdrantClientBuilder:
     def load_client_from_disk(
         path: str | Path,
         collection_name: str,
-        vectors_config: Mapping[str, VectorParams],
-        sparse_vectors_config: Mapping[str, SparseVectorParams],
+        # vectors_config: Mapping[str, VectorParams],
+        # sparse_vectors_config: Mapping[str, SparseVectorParams],
     ) -> QdrantClient:
         qdrant_client = QdrantClient(
             path=str(path),
             collection_name=collection_name,
-            vectors_config=vectors_config,
-            sparse_vectors_config=sparse_vectors_config,
+            # vectors_config=vectors_config,
+            # sparse_vectors_config=sparse_vectors_config,
         )
         return qdrant_client
 
@@ -115,22 +115,22 @@ class QdrantClientBuilder:
     def load_client_from_url(
         url: str,
         collection_name: str,
-        vectors_config: Mapping[str, VectorParams],
-        sparse_vectors_config: Mapping[str, SparseVectorParams],
+        # vectors_config: Mapping[str, VectorParams],
+        # sparse_vectors_config: Mapping[str, SparseVectorParams],
     ) -> QdrantClient:
         qdrant_client = QdrantClient(
             url=url,
             collection_name=collection_name,
-            vectors_config=vectors_config,
-            sparse_vectors_config=sparse_vectors_config,
+            # vectors_config=vectors_config,
+            # sparse_vectors_config=sparse_vectors_config,
         )
         return qdrant_client
 
     @staticmethod
     def load_client_from_memory(
         collection_name: str,
-        vectors_config: Mapping[str, VectorParams],
-        sparse_vectors_config: Mapping[str, SparseVectorParams],
+        # vectors_config: Mapping[str, VectorParams],
+        # sparse_vectors_config: Mapping[str, SparseVectorParams],
     ) -> QdrantClient:
         raise NotImplementedError(
             "在内存中只会构建后就释放，不会有加载的方法。"
