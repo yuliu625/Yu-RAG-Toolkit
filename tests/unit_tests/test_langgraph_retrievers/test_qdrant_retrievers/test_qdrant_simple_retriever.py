@@ -50,7 +50,7 @@ def _get_qdrant_simple_retriever() -> QdrantSimpleRetriever:
     qdrant_simple_retriever = QdrantSimpleRetriever(
         client=_get_client(),
         qdrant_embedding_model=_get_qdrant_embedding_model(),
-        search_config=_get_search_config(),
+        search_configs=_get_search_config(),
     )
     return qdrant_simple_retriever
 
