@@ -36,11 +36,11 @@ class QdrantSimpleRetriever:
         self,
         client: QdrantClient,
         qdrant_embedding_model: QdrantTextEmbeddingModelInterface,
-        search_config: dict,
+        search_configs: dict,
     ):
         self._client = client
         self._qdrant_embedding_model = qdrant_embedding_model
-        self._search_config = search_config
+        self._search_configs = search_configs
 
     # ==== 暴露方法。 ====
     async def process_state(
