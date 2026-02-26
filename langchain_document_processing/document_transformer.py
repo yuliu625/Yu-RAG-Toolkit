@@ -29,9 +29,10 @@ class DocumentTransformer:
     ) -> list[Document]:
         documents = []
         for point in response.points:
-            metadata = point.payload or {}
+            # metadata = point.payload or {}
+            metadata = point.payload['metadata']
             # make page_content
-            page_content = metadata['content']
+            page_content = point.payload['content']
             # make langchain::Document
             document = Document(
                 page_content=page_content,
