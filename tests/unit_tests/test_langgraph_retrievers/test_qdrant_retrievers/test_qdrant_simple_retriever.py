@@ -56,10 +56,11 @@ def _get_qdrant_simple_retriever() -> QdrantSimpleRetriever:
 
 
 class TestQdrantSimpleRetriever:
-    @pytest.mark.parametrize(
-        "simple_retriever", [
-        _get_qdrant_simple_retriever(),
-    ])
+    @pytest.fixture(scope='class')
+    def simple_retriever(self) -> QdrantSimpleRetriever:
+        simple_retriever = _get_qdrant_simple_retriever()
+        return simple_retriever
+
     def test_search_documents_via_dense_retrieval(
         self,
         simple_retriever: QdrantSimpleRetriever,
@@ -71,10 +72,6 @@ class TestQdrantSimpleRetriever:
         logger.info(f"Documents Length: {len(documents)}")
         logger.info(f"Documents: {documents}")
 
-    @pytest.mark.parametrize(
-        "simple_retriever", [
-        _get_qdrant_simple_retriever(),
-    ])
     def test_search_documents_via_sparse_retrieval(
         self,
         simple_retriever: QdrantSimpleRetriever,
@@ -86,10 +83,6 @@ class TestQdrantSimpleRetriever:
         logger.info(f"Documents Length: {len(documents)}")
         logger.info(f"Documents: {documents}")
 
-    @pytest.mark.parametrize(
-        "simple_retriever", [
-        _get_qdrant_simple_retriever(),
-    ])
     def test_search_documents_via_multi_vector(
         self,
         simple_retriever: QdrantSimpleRetriever,
@@ -101,10 +94,6 @@ class TestQdrantSimpleRetriever:
         logger.info(f"Documents Length: {len(documents)}")
         logger.info(f"Documents: {documents}")
 
-    @pytest.mark.parametrize(
-        "simple_retriever", [
-        _get_qdrant_simple_retriever(),
-    ])
     def test_hybrid_search_documents(
         self,
         simple_retriever: QdrantSimpleRetriever,
@@ -116,10 +105,6 @@ class TestQdrantSimpleRetriever:
         logger.info(f"Documents Length: {len(documents)}")
         logger.info(f"Documents: {documents}")
 
-    @pytest.mark.parametrize(
-        "simple_retriever", [
-        _get_qdrant_simple_retriever(),
-    ])
     def test_all_search_documents(
         self,
         simple_retriever: QdrantSimpleRetriever,
