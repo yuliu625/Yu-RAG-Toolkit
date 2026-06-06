@@ -4,19 +4,19 @@ Sources:
 References:
 
 Synopsis:
-    基于langgraph自实现的multi_query_retriever。
+    基于 langgraph 自实现的 multi_query_retriever 。
 
 Notes:
     注意:
-        deduplicate_documents有3种实现方法，分别为:
-            - langchain_classic::multi_query的实现:
+        deduplicate_documents 有 3 种实现方法，分别为:
+            - langchain_classic::multi_query 的实现:
                 ```python
                 def _unique_documents(documents: Sequence[Document]) -> list[Document]:
                     return [doc for i, doc in enumerate(documents) if doc not in documents[:i]]
                 ```
-                该方法依赖Document的__eq__方法，并且时间复杂度过高。
-            - 基于id去重。
-            - 基于内容的hash去重。
+                该方法依赖 Document 的 __eq__ 方法，并且时间复杂度过高。
+            - 基于 id 去重。
+            - 基于内容的 hash 去重。
 """
 
 from __future__ import annotations
