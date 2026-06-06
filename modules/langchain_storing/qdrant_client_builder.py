@@ -1,6 +1,6 @@
 """
 Sources:
-    https://github.com/yuliu625/Yu-RAG-Toolkit/langchain_storing/qdrant_client_builder.py
+    https://github.com/yuliu625/Yu-RAG-Toolkit/blob/main/modules/langchain_storing/qdrant_client_builder.py
 
 References:
     https://qdrant.tech/
