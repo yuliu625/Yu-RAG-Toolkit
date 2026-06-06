@@ -2,15 +2,13 @@
 Sources:
 
 References:
+    https://huggingface.co/nomic-ai/nomic-embed-multimodal-7b
 
 Synopsis:
+    nomic 基于 VLM 实现的 visual-document-retrieval 模型。
 
 Notes:
 
-nomic基于VLM实现的visual-document-retrieval模型。
-
-原始模型以及代码来源:
-https://huggingface.co/nomic-ai/nomic-embed-multimodal-7b
 """
 
 from __future__ import annotations
