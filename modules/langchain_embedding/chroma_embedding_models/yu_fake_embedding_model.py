@@ -4,12 +4,10 @@ Sources:
 References:
 
 Synopsis:
+    一个假的 embedding-model 。
 
 Notes:
-
-一个假的embedding-model。
-
-用于测试，以及暂时存储原始documents为document-store。
+    用于测试，以及暂时存储原始 documents 为 document-store 。
 """
 
 from __future__ import annotations
@@ -23,11 +21,12 @@ from typing import TYPE_CHECKING
 
 class YuFakeEmbeddingModel(Embeddings):
     """
-    这个类对应chroma需要的embedding_function。
+    这个类对应 chroma 需要的 embedding_function 。
 
     实际实现:
-        - 所有的输入都会编码为长度为1的embedding，具体为[0.0]。
+        - 所有的输入都会编码为长度为 1 的 embedding ，具体为 [0.0] 。
     """
+
     def __init__(
         self,
     ):
