@@ -1,12 +1,12 @@
 """
 Sources:
-    https://github.com/yuliu625/Yu-RAG-Toolkit/langchain_splitting/split_markdown.py
+    https://github.com/yuliu625/Yu-RAG-Toolkit/blob/main/modules/langchain_splitting/split_markdown.py
 
 References:
     https://docs.langchain.com/oss/python/integrations/splitters
 
 Synopsis:
-    分割markdown语法构建的文本。
+    分割 markdown 语法构建的文本。
 
 Notes:
 
@@ -44,7 +44,7 @@ class MarkdownSplittingMethods:
             headers_to_split_on=headers_to_split_on,
             strip_headers=is_strip_headers,
         )
-        # splitter需要的输入是str。但在这个实现中，为了pipeline的清晰流程，以Document对象输入。
+        # splitter 需要的输入是 str 。但在这个实现中，为了 pipeline 的清晰流程，以 Document 对象输入。
         documents = splitter.split_text(
             text=document.page_content,
         )
