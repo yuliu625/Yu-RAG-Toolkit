@@ -1,23 +1,23 @@
 """
 Sources:
-    https://github.com/yuliu625/Yu-RAG-Toolkit/langchain_retrievers/langchain_retriever_factory.py
+    https://github.com/yuliu625/Yu-RAG-Toolkit/blob/main/modules/langchain_retrievers/langchain_retriever_factory.py
 
 References:
     https://docs.langchain.com/oss/python/integrations/retrievers
 
 Synopsis:
-    基于langchain_classic的预构建retriever的构造方法。
+    基于 langchain_classic 的预构建 retriever 的构造方法。
 
 Notes:
-    这里的方法适用于简单RAG的快速实现。应该仅在原型开发时暂用。
+    这里的方法适用于简单 RAG 的快速实现。应该仅在原型开发时暂用。
 
     遗弃与兼容性:
-        - 当前各种retriever为兼容langchain方法而保留，但不应在:
+        - 当前各种 retriever 为兼容 langchain 方法而保留，但不应在:
             - 复杂系统;
             - 现代应用;
         中使用。
-        - 我已经在逐步放弃来自langchain_classic相关的依赖。
-        - 复杂的RAG系统，请查看基于langgraph的构建。
+        - 我已经在逐步放弃来自 langchain_classic 相关的依赖。
+        - 复杂的 RAG 系统，请查看基于 langgraph 的构建。
 """
 
 from __future__ import annotations
