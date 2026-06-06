@@ -1,21 +1,21 @@
 """
 Sources:
-    https://github.com/yuliu625/Yu-RAG-Toolkit/langchain_retrievers/langchain_retriever_builder.py
+    https://github.com/yuliu625/Yu-RAG-Toolkit/blob/main/modules/langchain_retrievers/langchain_retriever_builder.py
 
 References:
     https://docs.langchain.com/oss/python/integrations/retrievers
 
 Synopsis:
-    构造langchain classic下的retriever的方法。
+    构造 langchain classic下的 retriever 的方法。
 
 Notes:
-    基于as_retriever方法，构造多为通过可序列参数进行声明。
+    基于 as_retriever 方法，构造多为通过可序列参数进行声明。
 
-    langchain_classic.retrievers存在的问题是:
-        - as_retriever方法文档不清晰。
-        - 具体实现的方法多样，BaseRetriever实现困难。
+    langchain_classic.retrievers 存在的问题是:
+        - as_retriever 方法文档不清晰。
+        - 具体实现的方法多样， BaseRetriever 实现困难。
 
-    以下方法仅供参考。对于复杂的RAG，可以基于langgraph进行构建。
+    以下方法仅供参考。对于复杂的 RAG ，可以基于 langgraph 进行构建。
 """
 
 from __future__ import annotations
@@ -28,10 +28,11 @@ if TYPE_CHECKING:
 
 class LangchainRetrieverBuilder:
     """
-    构建langchain-v0.3以及langgraph之前推荐的retriever。
+    构建 langchain-v0.3 以及 langgraph 之前推荐的 retriever 。
 
-    该构造器为兼容性保留，复杂RAG应使用langgraph构建。
+    该构造器为兼容性保留，复杂 RAG 应使用 langgraph 构建。
     """
+
     @staticmethod
     def build_langchain_retriever(
         vector_store: VectorStore,
