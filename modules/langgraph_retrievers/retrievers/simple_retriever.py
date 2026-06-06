@@ -4,7 +4,7 @@ Sources:
 References:
 
 Synopsis:
-    基于langgraph实现的基础retriever。
+    基于 langgraph 实现的基础 retriever 。
 
 Notes:
 
