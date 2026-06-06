@@ -1,12 +1,12 @@
 """
 Sources:
-    https://github.com/yuliu625/Yu-RAG-Toolkit/langchain_loading/load_text.py
+    https://github.com/yuliu625/Yu-RAG-Toolkit/blob/main/modules/langchain_loading/load_text.py
 
 References:
     https://docs.langchain.com/oss/python/integrations/document_loaders
 
 Synopsis:
-    加载text的方法。
+    加载 text 的方法。
 
 Notes:
 
@@ -52,7 +52,7 @@ class TextLoadingMethods:
         )
         documents = loader.load()
         logger.trace(f"Document: \n", documents[0])
-        # 在默认加载下，应只有一个Document对象。
+        # 在默认加载下，应只有一个 Document 对象。
         assert len(documents) == 1
         return documents[0]
 
@@ -61,7 +61,7 @@ class TextLoadingMethods:
         directory_path: str | Path,
     ) -> list[Document]:
         """
-        通过文件夹路径通过pattern匹配的方法获取文件并进行加载。
+        通过文件夹路径通过 pattern 匹配的方法获取文件并进行加载。
 
         该方法可选但我没有具体去实现。我不喜欢不可控的过多自动推断和处理。
 
