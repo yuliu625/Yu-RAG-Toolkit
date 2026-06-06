@@ -2,15 +2,13 @@
 Sources:
 
 References:
+    https://huggingface.co/openai/clip-vit-large-patch14
 
 Synopsis:
+    以 CLIP 实现的 multi-modal-embedding-model 。
 
 Notes:
 
-以CLIP实现的multi-modal-embedding-model。
-
-原始模型以及代码来源:
-https://huggingface.co/openai/clip-vit-large-patch14
 """
 
 from __future__ import annotations
