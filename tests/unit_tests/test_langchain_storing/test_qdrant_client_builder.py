@@ -3,14 +3,12 @@ Tests for qdrant client builder.
 """
 
 from __future__ import annotations
-import pytest
 from loguru import logger
 
-from langchain_storing.qdrant_client_builder import (
+from modules.langchain_storing.qdrant_client_builder import (
     QdrantClientBuilder,
 )
 from qdrant_client.http.models import (
-    PointStruct,
     Distance,
     VectorParams,
     SparseVectorParams,
@@ -19,7 +17,7 @@ from qdrant_client.http.models import (
     MultiVectorComparator,
 )
 
-from typing import TYPE_CHECKING
+
 # if TYPE_CHECKING:
 
 
