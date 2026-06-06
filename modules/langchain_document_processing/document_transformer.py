@@ -2,6 +2,7 @@
 Sources:
 
 References:
+    None
 
 Synopsis:
     不同 vector store 下，对于 Document 对象的转换方法。
