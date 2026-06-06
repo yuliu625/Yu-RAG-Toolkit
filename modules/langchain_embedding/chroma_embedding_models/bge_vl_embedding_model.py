@@ -5,12 +5,9 @@ References:
     https://huggingface.co/BAAI/BGE-VL-large
 
 Synopsis:
+    BGE 基础的 multi-modal-embedding-model 。
 
 Notes:
-
-BGE基础的multi-modal-embedding-model。
-
-原始模型以及代码来源:
 
 """
 
@@ -29,7 +26,7 @@ from typing import TYPE_CHECKING
 
 class BGEVLEmbeddingModel(Embeddings):
     """
-    BGE基础的multi-modal-embedding-model。
+    BGE 基础的 multi-modal-embedding-model 。
     """
     def __init__(
         self,
