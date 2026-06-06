@@ -6,22 +6,16 @@ from __future__ import annotations
 import pytest
 from loguru import logger
 
-from langchain_storing.qdrant_point_builder import (
+from modules.langchain_storing import (
     QdrantPointBuilder,
 )
 
 from qdrant_client.http.models import (
-    PointStruct,
-    Distance,
-    VectorParams,
-    SparseVectorParams,
-    MultiVectorConfig,
-    MultiVectorComparator,
     SparseVector,
 )
 from langchain_core.documents import Document
 
-from typing import TYPE_CHECKING, Sequence
+from typing import Sequence
 # if TYPE_CHECKING:
 
 
