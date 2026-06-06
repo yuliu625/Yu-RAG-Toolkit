@@ -6,9 +6,9 @@ from __future__ import annotations
 import pytest
 from loguru import logger
 
-from langgraph_retrievers.retrievers.simple_retriever import SimpleRetriever
-from langchain_storing.chroma_vector_store_builder import ChromaVectorStoreBuilder
-from langchain_embedding.embedding_model_factory import EmbeddingModelFactory
+from modules.langgraph_retrievers.retrievers.simple_retriever import SimpleRetriever
+from modules.langchain_storing.chroma_vector_store_builder import ChromaVectorStoreBuilder
+from modules.langchain_embedding.embedding_model_factory import EmbeddingModelFactory
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
