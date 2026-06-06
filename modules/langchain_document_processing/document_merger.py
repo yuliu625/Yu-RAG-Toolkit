@@ -1,6 +1,6 @@
 """
 Sources:
-    https://github.com/yuliu625/Yu-RAG-Toolkit/langchain_document_processor/document_merger.py
+    https://github.com/yuliu625/Yu-RAG-Toolkit/blob/main/modules/langchain_document_processor/document_merger.py
 
 References:
     None
@@ -15,8 +15,8 @@ Notes:
 from __future__ import annotations
 
 # 依赖的自构建工具。
-from langchain_document_processing.content_annotator import ContentAnnotator
-from langchain_document_processing.content_block_processor import ContentBlockProcessor
+from modules.langchain_document_processing.content_annotator import ContentAnnotator
+from modules.langchain_document_processing.content_block_processor import ContentBlockProcessor
 
 from langchain_core.messages import HumanMessage
 
