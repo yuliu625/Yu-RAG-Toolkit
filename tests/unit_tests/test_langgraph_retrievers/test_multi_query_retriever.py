@@ -6,16 +6,15 @@ from __future__ import annotations
 import pytest
 from loguru import logger
 
-from langgraph_retrievers.retrievers.multi_query_retriever import (
+from modules.langgraph_retrievers import (
     MultiQueryRetriever,
     _RewrittenQueries,
     _structured_llm_system_message,
 )
-from langchain_storing.chroma_vector_store_builder import ChromaVectorStoreBuilder
-from langchain_embedding.embedding_model_factory import EmbeddingModelFactory
+from modules.langchain_storing.chroma_vector_store_builder import ChromaVectorStoreBuilder
+from modules.langchain_embedding.embedding_model_factory import EmbeddingModelFactory
 
 from langchain_ollama import ChatOllama
-from pydantic import BaseModel, Field
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
