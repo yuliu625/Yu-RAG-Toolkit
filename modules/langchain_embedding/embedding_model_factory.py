@@ -1,6 +1,6 @@
 """
 Sources:
-    https://github.com/yuliu625/Yu-RAG-Toolkit/langchain_embedding/embedding_model_factory.py
+    https://github.com/yuliu625/Yu-RAG-Toolkit/blob/main/modules/langchain_embedding/embedding_model_factory.py
 
 References:
     https://docs.langchain.com/oss/python/integrations/text_embedding
