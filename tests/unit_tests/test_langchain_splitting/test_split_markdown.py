@@ -6,10 +6,10 @@ from __future__ import annotations
 import pytest
 from loguru import logger
 
-from langchain_loading.load_text import TextLoadingMethods
-from langchain_splitting.split_markdown import MarkdownSplittingMethods
+from modules.langchain_loading.load_text import TextLoadingMethods
+from modules.langchain_splitting.split_markdown import MarkdownSplittingMethods
 
-from typing import TYPE_CHECKING
+
 # if TYPE_CHECKING:
 
 
