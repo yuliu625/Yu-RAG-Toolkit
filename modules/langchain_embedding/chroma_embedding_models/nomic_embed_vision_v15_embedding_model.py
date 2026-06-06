@@ -2,17 +2,14 @@
 Sources:
 
 References:
+    - https://huggingface.co/nomic-ai/nomic-embed-vision-v1.5
+    - https://huggingface.co/nomic-ai/nomic-embed-text-v1.5
 
 Synopsis:
+    nomic 基础的 multi-modal-embedding-model 。
 
 Notes:
 
-nomic基础的multi-modal-embedding-model。
-
-原始模型以及代码来源:
-https://huggingface.co/nomic-ai/nomic-embed-vision-v1.5
-这里同样需要额外对应的text-embedding-model:
-https://huggingface.co/nomic-ai/nomic-embed-text-v1.5
 """
 
 from __future__ import annotations
@@ -30,12 +27,13 @@ from typing import TYPE_CHECKING
 
 class NomicEmbedVisionV15EmbeddingModel(Embeddings):
     """
-    nomic基础的multi-modal-embedding-model。
+    nomic 基础的 multi-modal-embedding-model 。
 
-    这里需要2个模型。分别为:
+    这里需要 2 个模型。分别为:
         - nomic-embed-text-v1.5
         - nomic-embed-vision-v1.5
     """
+
     def __init__(
         self,
         vision_model_path: str,
