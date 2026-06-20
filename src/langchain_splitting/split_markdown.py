@@ -1,6 +1,6 @@
 """
 Sources:
-    https://github.com/yuliu625/Yu-RAG-Toolkit/blob/main/modules/langchain_splitting/split_markdown.py
+    https://github.com/yuliu625/Yu-RAG-Toolkit/blob/main/src/langchain_splitting/split_markdown.py
 
 References:
     https://docs.langchain.com/oss/python/integrations/splitters
