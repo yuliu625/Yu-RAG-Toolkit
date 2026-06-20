@@ -6,9 +6,9 @@ from __future__ import annotations
 import pytest
 from loguru import logger
 
-from modules.langchain_storing.qdrant_client_builder import QdrantClientBuilder
-from modules.langgraph_retrievers.qdrant_retrievers.simple_retriever import QdrantSimpleRetriever
-from modules.langchain_embedding.qdrant_embedding_models.bge_m3_embedding_model import BGEM3EmbeddingModel
+from src.langchain_storing.qdrant_client_builder import QdrantClientBuilder
+from src.langgraph_retrievers.qdrant_retrievers.simple_retriever import QdrantSimpleRetriever
+from src.langchain_embedding.qdrant_embedding_models.bge_m3_embedding_model import BGEM3EmbeddingModel
 
 from qdrant_client import QdrantClient
 
