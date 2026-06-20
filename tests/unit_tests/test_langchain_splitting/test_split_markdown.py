@@ -6,8 +6,8 @@ from __future__ import annotations
 import pytest
 from loguru import logger
 
-from modules.langchain_loading.load_text import TextLoadingMethods
-from modules.langchain_splitting.split_markdown import MarkdownSplittingMethods
+from src.langchain_loading.load_text import TextLoadingMethods
+from src.langchain_splitting.split_markdown import MarkdownSplittingMethods
 
 
 # if TYPE_CHECKING:
