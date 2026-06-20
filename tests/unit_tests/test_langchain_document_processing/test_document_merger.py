@@ -6,7 +6,7 @@ from __future__ import annotations
 import pytest
 from loguru import logger
 
-from modules.langchain_document_processing.document_merger import DocumentMerger
+from src.langchain_document_processing.document_merger import DocumentMerger
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
