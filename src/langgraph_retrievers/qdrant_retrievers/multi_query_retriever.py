@@ -12,7 +12,7 @@ Notes:
 from __future__ import annotations
 from loguru import logger
 
-from modules.langchain_document_processing.document_transformer import DocumentTransformer
+from src.langchain_document_processing.document_transformer import DocumentTransformer
 
 from qdrant_client import QdrantClient
 from qdrant_client.models import (
@@ -26,7 +26,7 @@ from pydantic import BaseModel, Field
 
 from typing import TYPE_CHECKING, cast, Literal
 if TYPE_CHECKING:
-    from modules.langchain_embedding.qdrant_embedding_interfaces.qdrant_text_embedding_model_interface import (
+    from src.langchain_embedding.qdrant_embedding_interfaces.qdrant_text_embedding_model_interface import (
         QdrantTextEmbeddingModelInterface,
     )
     from langchain_core.runnables import RunnableConfig
