@@ -5,7 +5,7 @@ Tests for qdrant client builder.
 from __future__ import annotations
 from loguru import logger
 
-from modules.langchain_storing.qdrant_client_builder import (
+from src.langchain_storing.qdrant_client_builder import (
     QdrantClientBuilder,
 )
 from qdrant_client.http.models import (
