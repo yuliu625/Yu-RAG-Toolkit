@@ -7,20 +7,20 @@ import pytest
 from langchain_core.language_models import BaseChatModel
 from loguru import logger
 
-from modules.langchain_storing.qdrant_client_builder import QdrantClientBuilder
-from modules.langgraph_retrievers.qdrant_retrievers.multi_query_retriever import (
+from src.langchain_storing.qdrant_client_builder import QdrantClientBuilder
+from src.langgraph_retrievers.qdrant_retrievers.multi_query_retriever import (
     QdrantMultiQueryRetriever,
     _RewrittenQueries,
     _structured_llm_system_message,
 )
-from modules.langchain_embedding.qdrant_embedding_models.bge_m3_embedding_model import BGEM3EmbeddingModel
+from src.langchain_embedding.qdrant_embedding_models.bge_m3_embedding_model import BGEM3EmbeddingModel
 
 from qdrant_client import QdrantClient
 from langchain_ollama import ChatOllama
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from modules.langchain_embedding.qdrant_embedding_interfaces.qdrant_text_embedding_model_interface import (
+    from src.langchain_embedding.qdrant_embedding_interfaces.qdrant_text_embedding_model_interface import (
         QdrantTextEmbeddingModelInterface,
     )
 
