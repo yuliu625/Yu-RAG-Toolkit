@@ -1,6 +1,6 @@
 """
 Sources:
-    https://github.com/yuliu625/Yu-RAG-Toolkit/blob/main/modules/langchain_retrievers/langchain_retriever_builder.py
+    https://github.com/yuliu625/Yu-RAG-Toolkit/blob/main/src/langchain_retrievers/langchain_retriever_builder.py
 
 References:
     https://docs.langchain.com/oss/python/integrations/retrievers
