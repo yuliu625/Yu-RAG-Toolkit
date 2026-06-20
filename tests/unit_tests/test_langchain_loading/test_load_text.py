@@ -6,7 +6,7 @@ from __future__ import annotations
 import pytest
 from loguru import logger
 
-from modules.langchain_loading.load_text import TextLoadingMethods
+from src.langchain_loading.load_text import TextLoadingMethods
 
 
 # if TYPE_CHECKING:
