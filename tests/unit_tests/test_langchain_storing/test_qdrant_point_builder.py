@@ -6,7 +6,7 @@ from __future__ import annotations
 import pytest
 from loguru import logger
 
-from modules.langchain_storing import (
+from src.langchain_storing import (
     QdrantPointBuilder,
 )
 
