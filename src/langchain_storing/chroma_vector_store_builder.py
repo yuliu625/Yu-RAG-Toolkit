@@ -1,6 +1,6 @@
 """
 Sources:
-    https://github.com/yuliu625/Yu-RAG-Toolkit/blob/main/modules/langchain_storing/chroma_vector_store_builder.py
+    https://github.com/yuliu625/Yu-RAG-Toolkit/blob/main/src/langchain_storing/chroma_vector_store_builder.py
 
 References:
     https://docs.langchain.com/oss/python/integrations/vectorstores
