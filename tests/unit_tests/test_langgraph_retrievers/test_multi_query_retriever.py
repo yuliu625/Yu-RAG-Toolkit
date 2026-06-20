@@ -6,13 +6,13 @@ from __future__ import annotations
 import pytest
 from loguru import logger
 
-from modules.langgraph_retrievers import (
+from src.langgraph_retrievers import (
     MultiQueryRetriever,
     _RewrittenQueries,
     _structured_llm_system_message,
 )
-from modules.langchain_storing.chroma_vector_store_builder import ChromaVectorStoreBuilder
-from modules.langchain_embedding.embedding_model_factory import EmbeddingModelFactory
+from src.langchain_storing.chroma_vector_store_builder import ChromaVectorStoreBuilder
+from src.langchain_embedding.embedding_model_factory import EmbeddingModelFactory
 
 from langchain_ollama import ChatOllama
 
