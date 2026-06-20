@@ -1,6 +1,6 @@
 """
 Sources:
-    https://github.com/yuliu625/Yu-RAG-Toolkit/blob/main/modules/langchain_loading/load_text.py
+    https://github.com/yuliu625/Yu-RAG-Toolkit/blob/main/src/langchain_loading/load_text.py
 
 References:
     https://docs.langchain.com/oss/python/integrations/document_loaders
